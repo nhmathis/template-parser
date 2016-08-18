@@ -7,6 +7,7 @@ ParserHelper ph = new ParserHelper(componentInput)
 ph.addTitle()
 ph.addOverview()
 ph.addEnvVarTable()
+ph.addProcesses()
 
 /**
  * param args Input parameters in String list format.

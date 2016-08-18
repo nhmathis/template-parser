@@ -55,6 +55,28 @@ public class ParserHelper {
             println "[Warning] No Environment Property Definitions (envPropDefs) were found!"
         }
     }
+    
+    void addProcesses() {
+        def processes = input.processes
+        def pName
+        def pDesc
+        if (processes.size() > 0) {
+            for (p in processes) {
+                pName = p.name
+                pDesc = p.description
+                readme << "### ${pName} Process \r\n"
+                readme << "\t${pDesc} \r\n"
+                readme << "![${pName} - Screenshot](https://ibm.app.box.com/representation/file_version_99034023272/image_2048/1.png) \r\n"
+                readme << "\r\n"
+            }
+            readme << "\r\n"
+            println "[Ok] Created ${processes.size()} Processes."
+        }
+        else {
+            readme << "No Processes. \r\n"
+            println "[Warning] No Processes (processes) were found!"
+        }
+    }
 
     void confirmJson(String inputFile) {
         File file = new File(inputFile)

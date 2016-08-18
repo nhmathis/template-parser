@@ -10,11 +10,12 @@ This plug-in is protected under the [Eclipse Public 1.0 License](http://www.ecli
  - [x] Simple Title from Name and Description
  - [x] Create Table of Environment Variables (envPropDefs)
     - Table Headers: Name | Label | Required | Type | Description
- - [] Process Title and Description
- - [] Gather process screenshots 
+ - [x] Process Title and Description
+ - [ ] Gather process screenshots 
     - 1) Scrape UCD
     - 2) Generate them in some other way
- - [] Display Step Properties with associated steps
+    - 3) [x] Using generic screenshot, manually update
+ - [ ] Display Step Properties with associated steps
     - Needs to be easily legible
- - [] Connect [Templates-UCD](https://github.com/IBM-UrbanCode/Templates-UCD) to /test folder.
+ - [ ] Connect [Templates-UCD](https://github.com/IBM-UrbanCode/Templates-UCD) to /test folder.
     - Run JUnit tests against these components
