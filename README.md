@@ -19,9 +19,10 @@ This plug-in is protected under the [Eclipse Public 1.0 License](http://www.ecli
  - [ ] Display Step Properties with associated steps
     - Needs to be easily legible
  - [ ] Modeling
+    - [x] Organize Layout
     - [ ] What is a component?
     - [ ] What is a resource?
     - [ ] How do things change across environments?
-    - [] What is static most of the time?
+    - [ ] What is static most of the time?
  - [ ] Connect [Templates-UCD](https://github.com/IBM-UrbanCode/Templates-UCD) to /test folder.
-    - Run JUnit tests against these components
+    - [ ] Run JUnit tests against these components

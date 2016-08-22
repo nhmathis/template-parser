@@ -7,6 +7,8 @@ public class ParserHelper {
     def input
     File readme
     
+    final def GENERIC_PIC = "https://ibm.box.com/shared/static/l4de9ku1wufswjx9ho79ez73dh0o8a1p.png"
+    
     public ParserHelper (String inputFile) {
         this(inputFile, "README.md")
     }
@@ -66,7 +68,7 @@ public class ParserHelper {
                 pDesc = p.description
                 readme << "### ${pName} Process \r\n"
                 readme << "\t${pDesc} \r\n"
-                readme << "![${pName} - Screenshot](https://ibm.app.box.com/representation/file_version_99034023272/image_2048/1.png) \r\n"
+                readme << "![${pName} - Screenshot](${GENERIC_PIC}) \r\n"
                 readme << "\r\n"
             }
             readme << "\r\n"
@@ -76,6 +78,27 @@ public class ParserHelper {
             readme << "No Processes. \r\n"
             println "[Warning] No Processes (processes) were found!"
         }
+    }
+
+    void addModeling() {
+        readme << "### Modeling\r\n"
+        readme << "\tMap IBM UrbanCode Deploy Applications, Components, Environments, and Resources to the integration's equivalents.\r\n"
+        readme << "\r\n"
+        readme << "\tApplication:[Description]\r\n"
+        readme << "\r\n"
+        readme << "\tEnvironment:[Description]\r\n"
+        readme << "\r\n"
+        readme << "\tComponent:[Description]\r\n"
+        readme << "\r\n"
+        readme << "\tResource:[Description]\r\n"
+        readme << "\r\n"
+        readme << "### Application, Environments, and the Components Screenshot\r\n"
+        readme << "![Application, Environments, and the Components Model - Screenshot](${GENERIC_PIC})\r\n"
+        readme << "\r\n"
+        readme << "### Resource Tree Screenshot\r\n"
+        readme << "![Resource Tree Model - Screenshot](${GENERIC_PIC})\r\n"
+        readme << "\r\n"
+        println "[Ok] Created Modeling Section"
     }
 
     void confirmJson(String inputFile) {
