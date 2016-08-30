@@ -12,12 +12,13 @@ This plug-in is protected under the [Eclipse Public 1.0 License](http://www.ecli
     - Table Headers: Name | Label | Required | Type | Description
  - [ ] Processes
     - [x] Title and Description
-    - [ ] Gather process screenshots 
+    - [ ] Gather process screenshots
+        - [x] Using generic screenshot, manually update
         - 1) Scrape UCD
         - 2) Generate them in some other way
-        - 3) [x] Using generic screenshot, manually update
  - [ ] Display Step Properties with associated steps
     - Needs to be easily legible
+ - [x] Plugin Version Requirements
  - [ ] Modeling
     - [x] Organize Layout
     - [ ] What is a component?
