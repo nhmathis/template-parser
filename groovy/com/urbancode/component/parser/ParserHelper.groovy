@@ -6,13 +6,13 @@ import groovy.json.JsonSlurper
 public class ParserHelper {
     def input
     File readme
-    
+
     final def GENERIC_PIC = "https://ibm.box.com/shared/static/l4de9ku1wufswjx9ho79ez73dh0o8a1p.png"
-    
+
     public ParserHelper (String inputFile) {
         this(inputFile, "README.md")
     }
-    
+
     public ParserHelper (String inputFile, String readmeName) {
         confirmJson(inputFile)
         new File("releases").mkdir()
@@ -22,24 +22,45 @@ public class ParserHelper {
         }
     }
 
-
     void addTitle() {
         def name = input.name
         def description = input.description
-         
+
         readme << "# ${name} Template\r\n"
         readme << "Description: ${description}\r\n"
         readme << "\r\n"
         println "[Ok] Created Name and Description."
     }
-    
+
     void addOverview() {
         readme << "### Overview\r\n"
-        readme << "\tThe overview of ${input.name} goes here! \r\n"
+        readme << "\tThe overview of ${input.name} goes here!\r\n"
         readme << "\r\n"
         println "[Ok] Created Overview placeholder."
     }
-    
+
+    void addPluginVersionRequirements() {
+        HashMap<String, Integer> mappy = new HashMap<String, Integer>()
+        for (process in input.processes) {
+            for (step in process.rootActivity.children) {
+                if (step.pluginName) {
+                    mappy.put(step.pluginName, step.pluginVersion)
+                    if (step.children.size() > 0) {
+                        println "[Warning] Missed children of '${step.pluginName}'."
+                    }
+                }
+            }
+        }
+        readme << "### Plug-in Version Requirements\r\n"
+        readme << "Plug-in Name | Version \r\n"
+        readme << "------------ | ------------- \r\n"
+        for (key in mappy.keySet()) {
+            readme << "${key} | ${mappy.get(key)}\r\n"
+        }
+        readme << "\r\n"
+        println "[Ok] Created a table of ${mappy.size()} Plug-in Version Requirements."
+    }
+
     void addEnvVarTable() {
         def envPropDefs = input.envPropDefs
         readme << "### Environment Variables \r\n"
@@ -57,7 +78,7 @@ public class ParserHelper {
             println "[Warning] No Environment Property Definitions (envPropDefs) were found!"
         }
     }
-    
+
     void addProcesses() {
         def processes = input.processes
         def pName
@@ -98,7 +119,7 @@ public class ParserHelper {
         readme << "### Resource Tree Screenshot\r\n"
         readme << "![Resource Tree Model - Screenshot](${GENERIC_PIC})\r\n"
         readme << "\r\n"
-        println "[Ok] Created Modeling Section"
+        println "[Ok] Created Modeling Section."
     }
 
     void confirmJson(String inputFile) {
@@ -106,7 +127,7 @@ public class ParserHelper {
         if (!file.isFile()) {
             throw new FileNotFoundException ("[Error] '${inputFile}' is not a file.")
         }
-    
+
         JsonSlurper slurper = new JsonSlurper()
         try {
             this.input = slurper.parseText(file.text)

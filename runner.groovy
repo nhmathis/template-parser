@@ -6,6 +6,7 @@ def componentInput = this.args[0]
 ParserHelper ph = new ParserHelper(componentInput)
 ph.addTitle()
 ph.addOverview()
+ph.addPluginVersionRequirements()
 ph.addEnvVarTable()
 ph.addProcesses()
 ph.addModeling()
