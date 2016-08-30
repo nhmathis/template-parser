@@ -89,6 +89,8 @@ public class ParserHelper {
                 pDesc = p.description
                 readme << "### ${pName} Process \r\n"
                 readme << "\t${pDesc} \r\n"
+                readme << "\r\n"
+                addPropDefs(p.propDefs)
                 readme << "![${pName} - Screenshot](${GENERIC_PIC}) \r\n"
                 readme << "\r\n"
             }
@@ -99,6 +101,16 @@ public class ParserHelper {
             readme << "No Processes. \r\n"
             println "[Warning] No Processes (processes) were found!"
         }
+    }
+
+    void addPropDefs(def propDefs) {
+        readme << "**Property Definitions**\r\n"
+        readme << "Label | Required | Description\r\n"
+        readme << "------------ | ------------- | ------------- \r\n"
+        for (propDef in propDefs) {
+            readme << "${propDef.label} | ${propDef.required} | ${propDef.description}\r\n"
+        }
+        readme<< "\r\n"
     }
 
     void addModeling() {
